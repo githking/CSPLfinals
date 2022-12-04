@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbFexam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form id="myform">
+        <div class="container-fluid bg-dark">
+            <div class="d-flex justify-content-center">
+                <div class="col-sm-4 text-center bg-dark text-white" style=" border-radius: 3px;font-size:1.2vw; ">
+                    <b>Method</b>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-4 bg-secondary text-white"
+                    style="border:1px solid black;border-radius: 5px;font-size:1.5vw;">
+                    <fieldset id="group1">
+                        <input type="radio" value="get" id="getradio" name="group1" onclick="disable()">GET</br>
+                        <input type="radio" value="post" id="postradio" name="group1" onclick="enable()">POST</br>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="d-flex  justify-content-center">
+                <div class="col-sm-4 text-center bg-dark text-white" style="border-radius: 3px;font-size:1.2vw;">
+                    <b>Title</b></br>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-4 bg-secondary text-white"
+                    style="border:1px solid black;border-radius: 5px;font-size:1.5vw;">
+                    <fieldset id="group2">
+                        <input type="radio" value="Happy" id="hradio" name="group2">Happy</br>
+                        <input type="radio" value="Lady" id="lradio" name="group2">Lady</br>
+                        <input type="radio" value="Groovy" id="gradio" name="group2">Groovy</br>
+                        <input type="radio" value="Jolly" id="jradio" name="group2">Jolly</br>
+                    </fieldset>
+                </div></br>
+            </div>
+            <div class="d-flex  justify-content-center">
+                <div class="col-sm-4 text-center bg-dark text-white" style="border-radius: 3px;font-size:1.2vw;">
+                    <b>Body</b></br>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-4 bg-secondary text-white"
+                    style="border:1px solid black;border-radius: 5px;font-size:1.5vw;">
+                    <fieldset id="group3">
+                        <input type="radio" value="Fox" id="foxrad" name="group3">Fox</br>
+                        <input type="radio" value="Pig" id="pigrad" name="group3">Pig</br>
+                        <input type="radio" value="Wolf" id="wolfrad" name="group3">Wolf</br>
+                        <input type="radio" value="Bee" id="bearrad" name="group3">Bee</br>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="d-flex p-1 justify-content-center ">
+                <input type="button" class="btn btn-secondary text-white btn-sm" value="Perform action"
+                    onclick="perform()" style="border:1px solid black;">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-4 text-center bg-dark text-white" style=" border-radius:3px;">
+                    <h1 style="font-size:1.5vw;">Output</h1>
+                </div>
+            </div>
+
+            <div class="form-output">
+                <div class="col-sm-12 p-2">
+                    <div class="form-floating p-2">
+                        <input type="text" class="form-control" id="otitle" placeholder="title"
+                            style="border:1px solid gray;font-size:1.5vw;"></br>
+                        <label for="otitle">
+                            <p style="color:grey">Title</p>
+                        </label>
+                    </div>
+                    <div class="form-floating p-1">
+                        <input type="text" class="form-control" id="obody" placeholder="body"
+                            style="border:1px solid gray;font-size:1.5vw;">
+                        <label for="obody">
+                            <p style="color:grey">Body</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        var form = document.getElementById("myform")       
+        var get = document.getElementById("getradio")
+        var post = document.getElementById("postradio")
+        var bxtitle = document.getElementById("otitle")
+        var bxbody = document.getElementById("obody")
+        function disable() {
+            bxtitle.value = "";
+            bxbody.value = "";
+            document.getElementById("hradio").disabled = true;
+            document.getElementById("lradio").disabled = true;
+            document.getElementById("gradio").disabled = true;
+            document.getElementById("jradio").disabled = true;
+            document.getElementById("foxrad").disabled = true;
+            document.getElementById("pigrad").disabled = true;
+            document.getElementById("wolfrad").disabled = true;
+            document.getElementById("bearrad").disabled = true;
+        }
+        function enable() {
+            bxtitle.value = "";
+            bxbody.value = "";
+            document.getElementById("hradio").disabled = false;
+            document.getElementById("lradio").disabled = false;
+            document.getElementById("gradio").disabled = false;
+            document.getElementById("jradio").disabled = false;
+            document.getElementById("foxrad").disabled = false;
+            document.getElementById("pigrad").disabled = false;
+            document.getElementById("wolfrad").disabled = false;
+            document.getElementById("bearrad").disabled = false;
+        }
+        function perform() {
+            if (post.checked) {
+                postResponse();
+                
+            }
+            else if (get.checked) {
+                getResponse();
+
+            }
+        }
+        
+        form.addEventListener("button", function (e) {
+            e.preventDefault()
+
+        })
+
+
+        async function getResponse() {
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+            if (!response.ok) {
+                throw new Error("Something went wrong" + response.statusText)
+            }
+            const data = await response.json()
+            console.log(data)
+
+            let index = Math.floor(Math.random() * 100);
+
+            bxtitle.value = data[index].title;
+            bxbody.value = data[index].body;
+
+        }
+        async function postResponse() {
+            var titleval = document.querySelector(
+                'input[name="group2"]:checked');
+
+            if (titleval != null) {
+                var title = titleval.value;
+            }
+            var bodyval = document.querySelector(
+                'input[name="group3"]:checked');
+
+            if (bodyval != null) {
+                var body = bodyval.value;
+            }
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: title,
+                    body: body
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            })
+            if (!response.ok) {
+                throw new Error("Something went wrong" + response.statusText)
+            }
+            const data = await response.json()
+            console.log(data)
+
+            bxtitle.value = data.title;
+            bxbody.value = data.body;
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
